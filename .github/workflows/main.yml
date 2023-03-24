@@ -23,6 +23,7 @@ jobs:
         npm run test
 
     - name: Deploy to FTP
+      uses: actions/checkout@v2
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
