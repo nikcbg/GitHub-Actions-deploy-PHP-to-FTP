@@ -1,0 +1,35 @@
+name: deploy to single FTP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Install dependencies
+      run: |
+        sudo apt-get update && sudo apt-get install -y zip
+        composer install --no-interaction --no-suggest --no-scripts
+        
+    - name: Run tests
+      run: vendor/bin/phpunit tests/
+      
+    - name: Build the application
+      run: |
+        zip -r application.zip * -x *.git* -x *.github*
+        
+    - name: Deploy the application
+      uses: SamKirkland/FTP-Deploy-Action@4.2.1
+      with:
+        ftp-server: ${{ secrets.FTP_SERVER }}
+        ftp-username: ${{ secrets.FTP_USERNAME }}
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./
+        server-dir: /public_html/
