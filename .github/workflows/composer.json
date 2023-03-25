@@ -1,8 +1,0 @@
-{
-    "name": "your-project-name",
-    "description": "Your project description",
-    "require": {
-        "php": "^7.4",
-        "some-dependency": "^1.0"
-    }
-}
