@@ -6,3 +6,21 @@
         "some-dependency": "^1.0"
     }
 }
+
+
+{
+    "name": "test-php",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "hello.php\\": "GitHub-Actions-deploy-PHP-to-FTP/hello.php/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "hello.php\\Tests\\": "tests/"
+        }
+    }
+}
