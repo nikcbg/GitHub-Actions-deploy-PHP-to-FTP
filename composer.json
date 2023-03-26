@@ -1,8 +1,8 @@
 {
-    "name": "Deploy to FTP on push"
-    "description": "test"
+    "name": "Deploy to FTP on push",
+    "description": "test",
     "require": {
-        "php": "^7.4"
+        "php": "^7.4",
         "some-dependency": "^1.0"
     }
 }
